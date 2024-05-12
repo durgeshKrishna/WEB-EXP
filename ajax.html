@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TCE.EDU Web Application</title>
+<!-- Include jQuery library -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<h2>Welcome to TCE.EDU Web Application</h2>
+
+<!-- Display area for fetching data -->
+<div id="dataDisplay"></div>
+
+<script>
+$(document).ready(function() {
+    // Function to make AJAX request
+    function fetchData() {
+        $.ajax({
+            url: 'https://api.example.com/data', // Replace with your API endpoint
+            method: 'GET',
+            success: function(response) {
+                // Display the fetched data
+                $('#dataDisplay').html('<pre>' + JSON.stringify(response, null, 2) + '</pre>');
+            },
+            error: function(xhr, status, error) {
+                // Handle errors
+                console.error('Error:', error);
+                $('#dataDisplay').html('<div>Error fetching data. Please try again later.</div>');
+            }
+        });
+    }
+
+    // Call the fetchData function on page load
+    fetchData();
+});
+</script>
+
+</body>
+</html>

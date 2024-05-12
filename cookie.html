@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+</head>
+<body>
+
+<h2>Login</h2>
+
+<!-- Login form -->
+<form id="loginForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><br><br>
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+    
+    <button type="submit">Login</button>
+</form>
+
+<script>
+// Function to check authentication
+function authenticate(username, password) {
+    // User ID and password stored in cookies
+    var users = {
+        "user1": "password1",
+        "user2": "password2",
+        "user3": "password3",
+        "user4": "password4"
+    };
+    
+    // Check if user exists and password matches
+    if (users.hasOwnProperty(username) && users[username] === password) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// Handle form submission
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent default form submission
+    
+    // Get username and password from form
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    
+    // Authenticate user
+    if (authenticate(username, password)) {
+        alert("Welcome, " + username + "!");
+    } else {
+        alert("You are not an authenticated user.");
+    }
+});
+</script>
+
+</body>
+</html>

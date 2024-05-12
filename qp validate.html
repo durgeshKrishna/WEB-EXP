@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration</title>
+</head>
+<body>
+
+<h2>Registration</h2>
+
+<!-- Registration form -->
+<form id="registrationForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br><br>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+    
+    <label for="phone">Phone Number:</label>
+    <input type="text" id="phone" name="phone" required><br><br>
+    
+    <button type="submit">Register</button>
+</form>
+
+<script>
+document.getElementById("registrationForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent default form submission
+    
+    // Get form inputs
+    var name = document.getElementById("name").value.trim();
+    var password = document.getElementById("password").value.trim();
+    var email = document.getElementById("email").value.trim();
+    var phone = document.getElementById("phone").value.trim();
+    
+    // Validate name
+    if (!validateName(name)) {
+        alert("Name should contain alphabets and the length should not be less than 6 characters.");
+        return;
+    }
+    
+    // Validate password length
+    if (password.length < 6) {
+        alert("Password should not be less than 6 characters.");
+        return;
+    }
+    
+    // Validate email format
+    if (!validateEmail(email)) {
+        alert("Invalid email format. Email must follow the standard pattern name@domain.com.");
+        return;
+    }
+    
+    // Validate phone number format
+    if (!validatePhoneNumber(phone)) {
+        alert("Phone number should contain 10 digits only.");
+        return;
+    }
+    
+    // If all validations pass, registration is successful
+    alert("Registration successful!");
+});
+
+// Function to validate name
+function validateName(name) {
+    return /^[a-zA-Z ]{6,}$/.test(name);
+}
+
+// Function to validate email format
+function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// Function to validate phone number format
+function validatePhoneNumber(phone) {
+    return /^[0-9]{10}$/.test(phone);
+}
+</script>
+
+</body>
+</html>

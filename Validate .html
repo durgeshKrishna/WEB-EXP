@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+<script>
+function validateForm() {
+    var userID = document.getElementById("userID").value;
+    var password = document.getElementById("password").value;
+    var name = document.getElementById("name").value;
+    var zipCode = document.getElementById("zipCode").value;
+    var email = document.getElementById("email").value;
+    var sex = document.querySelector('input[name="sex"]:checked');
+    var language = document.querySelector('input[name="language"]:checked');
+
+    // Validation for User ID
+    if (userID.length < 5 || userID.length > 12) {
+        alert("User ID must be between 5 and 12 characters.");
+        return false;
+    }
+
+    // Validation for Password
+    if (password.length < 7 || password.length > 12) {
+        alert("Password must be between 7 and 12 characters.");
+        return false;
+    }
+
+    // Validation for Name
+    if (!/^[a-zA-Z]+$/.test(name)) {
+        alert("Name must contain alphabets only.");
+        return false;
+    }
+
+    // Validation for ZIP Code
+    if (!/^\d+$/.test(zipCode)) {
+        alert("ZIP Code must contain numeric characters only.");
+        return false;
+    }
+
+    // Validation for Email
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+        alert("Invalid email address.");
+        return false;
+    }
+
+    // Validation for Sex
+    if (!sex) {
+        alert("Please select a gender.");
+        return false;
+    }
+
+    // Validation for Language
+    if (!language) {
+        alert("Please select a language.");
+        return false;
+    }
+
+    return true;
+}
+</script>
+</head>
+<body>
+<h2>Registration Form</h2>
+<form onsubmit="return validateForm()">
+    <label for="userID">User ID:</label>
+    <input type="text" id="userID" name="userID" required><br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="address">Address:</label>
+    <input type="text" id="address" name="address"><br><br>
+
+    <label for="zipCode">ZIP Code:</label>
+    <input type="text" id="zipCode" name="zipCode" required><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="sex">Sex:</label>
+    <input type="radio" id="male" name="sex" value="male" required>
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="sex" value="female">
+    <label for="female">Female</label><br><br>
+
+    <label for="language">Language:</label>
+    <input type="radio" id="english" name="language" value="english" required>
+    <label for="english">English</label>
+    <input type="radio" id="nonEnglish" name="language" value="nonEnglish">
+    <label for="nonEnglish">Non-English</label><br><br>
+
+    <label for="about">About:</label>
+    <textarea id="about" name="about"></textarea><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAMU Student Portal</title>
+<!-- Include jQuery library -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    .important {
+        color: red;
+    }
+</style>
+</head>
+<body>
+
+<h2>Welcome to CAMU Student Portal</h2>
+
+<!-- Example login form -->
+<form id="loginForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><br><br>
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+    
+    <button type="submit" id="loginButton" class="important" data-role="student">Login</button>
+</form>
+
+<!-- Display area for notifications -->
+<div id="notificationArea"></div>
+
+<script>
+$(document).ready(function() {
+    // Selecting elements
+    var $loginButton = $('#loginButton');
+    var $importantElements = $('.important');
+    var $studentElements = $('[data-role="student"]');
+
+    // Handle form submission
+    $('#loginForm').submit(function(event) {
+        event.preventDefault(); // Prevent default form submission
+        
+        // Get username and password
+        var username = $('#username').val();
+        var password = $('#password').val();
+        
+        // Perform login validation (dummy validation)
+        if (username === 'student' && password === 'password') {
+            // Display success message
+            $('#notificationArea').html('<div class="success">Login successful!</div>');
+        } else {
+            // Display error message
+            $('#notificationArea').html('<div class="error">Invalid username or password. Please try again.</div>');
+        }
+    });
+});
+</script>
+
+</body>
+</html>

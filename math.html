@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Number Operations</title>
+</head>
+<body>
+
+<script>
+// Function to calculate sum of numbers
+function sum(numbers) {
+    return numbers.reduce((total, num) => total + num, 0);
+}
+
+// Function to calculate average of numbers
+function average(numbers) {
+    return sum(numbers) / numbers.length;
+}
+
+// Function to calculate product of numbers
+function product(numbers) {
+    return numbers.reduce((total, num) => total * num, 1);
+}
+
+// Function to find smallest number
+function smallest(numbers) {
+    return Math.min(...numbers);
+}
+
+// Function to find largest number
+function largest(numbers) {
+    return Math.max(...numbers);
+}
+
+// Prompt user for three integers
+var num1 = parseInt(prompt("Enter the first integer:"));
+var num2 = parseInt(prompt("Enter the second integer:"));
+var num3 = parseInt(prompt("Enter the third integer:"));
+
+// Calculate sum, average, product, smallest, and largest
+var numbers = [num1, num2, num3];
+var sumResult = sum(numbers);
+var averageResult = average(numbers);
+var productResult = product(numbers);
+var smallestResult = smallest(numbers);
+var largestResult = largest(numbers);
+
+// Display results in an alert dialog
+var message = "Sum: " + sumResult + "\n" +
+              "Average: " + averageResult + "\n" +
+              "Product: " + productResult + "\n" +
+              "Smallest: " + smallestResult + "\n" +
+              "Largest: " + largestResult;
+
+alert(message);
+</script>
+
+</body>
+</html>
